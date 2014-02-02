@@ -1,1 +1,6 @@
 * Grant Chen's emacs configuration
+** Install Package
+  - auto-complete
+  - magit
+  - web-mode
+  - yasnippet
