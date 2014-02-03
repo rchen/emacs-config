@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: nav
+# contributor: Grant Chen
+# group: html5
+# key: nav
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+<nav role="$1">
+  $0		
+</nav>
