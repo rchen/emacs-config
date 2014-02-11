@@ -2,10 +2,12 @@
 (require 'package)
 (package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+                         ;; ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;; Yasippet
 (require 'yasnippet)
+(setq yas-snippet-dirs (append yas-snippet-dirs
+			  '("~/.emacs.d/emacs-config/my-snippets")))
 (yas/global-mode 1)
 
 ;; auto-complete
@@ -39,6 +41,7 @@
  '(custom-enabled-themes (quote (misterioso)))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(menu-bar-mode t)
  '(ns-pop-up-frames nil)
