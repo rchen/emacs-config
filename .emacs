@@ -21,17 +21,8 @@
 (add-to-list 'auto-mode-alist '("\\.ctp?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
 
-;; font
-;; (set-face-attribute 'default nil :height 150)                     
-(eval-when-compile (require 'cl))
-
-(defun set-font (english chinese english-size chinese-size)
-  (set-face-attribute 'default nil :font
-                           (format "%s:pixelsize=%d" english english-size))
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-     (set-fontset-font (frame-parameter nil 'font) charset
-                           (font-spec :family chinese :size chinese-size))))
-(set-font "Monaco" "LiHei Pro" 16 20)
+;; my config
+(load-file "~/.emacs.d/emacs-config/rchen.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
