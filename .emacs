@@ -2,12 +2,14 @@
 (require 'package)
 (package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
-                         ;; ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ))
+
 ;; Yasippet
 (require 'yasnippet)
-(setq yas-snippet-dirs (append yas-snippet-dirs
-			  '("~/.emacs.d/emacs-config/my-snippets")))
+;; (setq yas-snippet-dirs (append yas-snippet-dirs
+;; 			  '("~/.emacs.d/emacs-config/snippets")))
 (yas/global-mode 1)
 
 ;; auto-complete
@@ -50,3 +52,12 @@
 (global-set-key [C-f7] 'toggle-frame-fullscreen) ;; fullscreen
 (global-set-key (kbd "M-SPC") 'set-mark-command) ;; mark command
 ;; '(c-basic-offset 4)
+
+;; virtualenvwrapper
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells)
+(venv-initialize-eshell)
+(setq venv-location "~/.virtualenvs")
+
+(add-to-list 'exec-path "/usr/local/bin")
+(setq css-indent-offset 2)
