@@ -8,15 +8,13 @@
 
 ;; Yasippet
 (require 'yasnippet)
-;; (setq yas-snippet-dirs (append yas-snippet-dirs
-;; 			  '("~/.emacs.d/emacs-config/snippets")))
+(setq yas-snippet-dirs (append yas-snippet-dirs
+			  '("~/.emacs.d/emacs-config/snippets")))
 (yas/global-mode 1)
 
 ;; auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
-
-;; magit
 
 ;; web-mode
 (require 'web-mode)
@@ -59,5 +57,36 @@
 (venv-initialize-eshell)
 (setq venv-location "~/.virtualenvs")
 
-(add-to-list 'exec-path "/usr/local/bin")
+;; (add-to-list 'exec-path "/usr/local/bin")
+;; ctags
+
+;; customized 
 (setq css-indent-offset 2)
+
+
+;; ac-etags  
+(custom-set-variables
+ '(ac-etags-requires 1))
+(eval-after-load "etags"
+  '(progn
+    (ac-etags-setup)))
+
+(add-hook 'c-mode-common-hook 'ac-etags-ac-setup)
+
+;; python 
+;; 
+(require 'python-mode)
+(require 'ipython)
+;; ipython 
+(defvar server-buffer-clients)
+(when (and (fboundp 'server-start) (string-equal (getenv "TERM") 'xterm))
+  (server-start)
+  (defun fp-kill-server-with-buffer-routine ()
+    (and server-buffer-clients (server-done)))
+  (add-hook 'kill-buffer-hook 'fp-kill-server-with-buffer-routine))
+
+;; magit
+;; ediff
+(load-library "ediff")
+(add-hook 'ediff-quit-hook 'kill-buffer)
+(setq-default c-basic-offset 4)
