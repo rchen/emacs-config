@@ -11,7 +11,7 @@
 (set-font "Monaco" "LiHei Pro" 16 20)
 
 ;; ctag
-(setq path-to-ctags "~/.emacs.d/TAGS");;
+(setq path-to-ctags "./TAGS");;
 
 (defun create-tags (dir-name)
   "Create tags file."
