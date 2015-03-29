@@ -63,7 +63,6 @@
 ;; customized 
 (setq css-indent-offset 2)
 
-
 ;; ac-etags  
 (custom-set-variables
  '(ac-etags-requires 1))
@@ -90,3 +89,12 @@
 (load-library "ediff")
 (add-hook 'ediff-quit-hook 'kill-buffer)
 (setq-default c-basic-offset 4)
+
+;; http://web-mode.org
+;; indent
+(defun my-web-mode-hook ()
+  "Hooks for web mode."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+)
+(add-hook 'web-mode-hook 'my-web-mode-hook)
