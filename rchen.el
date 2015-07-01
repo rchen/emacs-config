@@ -20,7 +20,7 @@
    (format "/usr/local/bin/ctags -f %s -e -R %s" path-to-ctags (directory-file-name dir-name))))
 
 ;; blog setting 
-(require 'org-publish)
+(require 'ox-publish)
 (setq org-publish-project-alist
       '(
 
@@ -51,3 +51,9 @@
         ("blog" :components ("blog-notes" "blog-static"))
         ;;
         ))
+
+;; open daily markdown
+(defun md-daily ()
+  (interactive)
+  (let ((daily-name (format-time-string "%Y-%m-%d")))
+    (find-file (concat daily-name ".md"))))
