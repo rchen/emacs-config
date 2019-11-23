@@ -4,3 +4,7 @@
   - magit
   - web-mode
   - yasnippet
+  - elpy
+  - virtualenvwrapper
+  - ac-etags
+  - python-mode

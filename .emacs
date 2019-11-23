@@ -78,7 +78,7 @@
 ;; python 
 ;; 
 (require 'python-mode)
-(require 'ipython)
+
 ;; ipython 
 (defvar server-buffer-clients)
 (when (and (fboundp 'server-start) (string-equal (getenv "TERM") 'xterm))
