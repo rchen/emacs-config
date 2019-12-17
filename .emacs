@@ -2,10 +2,11 @@
 (require 'package)
 (package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
-                         ("elpy" . "http://jorgenschaefer.github.io/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ;; ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ;; ("elpy" . "http://jorgenschaefer.github.io/packages/")
                          ))
+(package-initialize)
 ;; elpy
 (elpy-enable)
 
@@ -39,6 +40,9 @@
  '(inhibit-startup-screen t)
  '(menu-bar-mode t)
  '(ns-pop-up-frames nil)
+ '(package-selected-packages
+   (quote
+    (yasnippet-snippets editorconfig yaml-mode web-mode virtualenvwrapper tide python-mode magit json-navigator js2-mode emmet-mode elpy ac-etags)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -63,12 +67,8 @@
 ;; (add-to-list 'exec-path "/usr/local/bin")
 ;; ctags
 
-;; customized 
-(setq css-indent-offset 2)
-
 ;; ac-etags  
-(custom-set-variables
- '(ac-etags-requires 1))
+
 (eval-after-load "etags"
   '(progn
     (ac-etags-setup)))
@@ -79,7 +79,6 @@
 ;; 
 (require 'python-mode)
 
-;; ipython 
 (defvar server-buffer-clients)
 (when (and (fboundp 'server-start) (string-equal (getenv "TERM") 'xterm))
   (server-start)
@@ -98,6 +97,13 @@
 (defun my-web-mode-hook ()
   "Hooks for web mode."
   (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
 )
 (add-hook 'web-mode-hook 'my-web-mode-hook)
+
+(add-hook 'python-mode-hook'
+          (lambda()
+            (setq indent-tabs-mode nil)
+            (setq indent-width 4)
+            (setq python-indent-offset 4)))
